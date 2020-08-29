@@ -47,6 +47,7 @@ df %>%
   labs(title = "Distancia Velocidad en Vehiculos",
        x = "Velocidad",
        y = "Distancia") +
-  theme(panel.background = element_blank())
+  theme(panel.background = element_blank(),
+        axis.line = element_line(size = .5), text = element_text(family = 'bookman'))
 ```
 
