@@ -28,3 +28,25 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+Otro plot
+
+```{r}
+install.packages("ggplot2")
+install.packages("dplyr")
+library(ggplot2)
+library(dplyr)
+
+
+df = cars
+
+df %>%
+  ggplot(mapping = aes(x = speed, y = dist)) +
+  geom_point(col = "blue") +
+  labs(title = "Distancia Velocidad en Vehiculos",
+       x = "Velocidad",
+       y = "Distancia") +
+  theme(panel.background = element_blank())
+```
+
