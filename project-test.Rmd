@@ -32,12 +32,11 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 Otro plot
 
-```{r}
+```{r, fig.height=5, fig.width=7}
 install.packages("ggplot2")
 install.packages("dplyr")
 library(ggplot2)
 library(dplyr)
-
 
 df = cars
 
@@ -48,6 +47,8 @@ df %>%
        x = "Velocidad",
        y = "Distancia") +
   theme(panel.background = element_blank(),
-        axis.line = element_line(size = .5), text = element_text(family = 'bookman'))
+        axis.line = element_line(size = .5), 
+        plot.title = element_text(family = 'serif', size = 20, vjust = .5, hjust = .5),
+        axis.text = element_text(family = 'serif'))
 ```
 
