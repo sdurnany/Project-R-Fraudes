@@ -1,0 +1,41 @@
+B 2 C o m p i l a t i o n
+B 10141 Include File Summary
+B 10171 Equation Listing    SOLVE Excel_Respuesta Using MIP From line 2350
+D 10172 R01
+D 10185 R02
+D 10368 R03
+D 10373 R04
+D 10408 R05
+D 10467 R06
+D 10575 R07
+D 10658 R08
+D 10669 R09
+D 10699 R11
+D 10708 FO
+B 11037 Column Listing      SOLVE Excel_Respuesta Using MIP From line 2350
+E 11038 A
+E 11172 G
+E 11190 X
+E 11209 Z
+B 11222 Model Statistics    SOLVE Excel_Respuesta Using MIP From line 2350
+B 11238 Solution Report     SOLVE Excel_Respuesta Using MIP From line 2350
+F 11276 R01
+F 11446 R02
+F 11454 R03
+F 11459 R04
+F 11500 R05
+F 11541 R06
+F 11582 R07
+F 11623 R08
+F 11639 R09
+F 11674 R11
+F 11680 FO
+G 11683 A
+G 12183 G
+G 12191 X
+G 12226 Z
+B 12239 E x e c u t i o n
+I 12240 A
+I 12324 G
+I 12329 X
+I 12340 Z

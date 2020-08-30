@@ -1,0 +1,109 @@
+*TAREA 2
+SET
+*CONJUNTOS
+k instancias /1*165/
+i tipos de seguro /1*10/
+b bancos /1*36/
+j asegurados /1*154/
+t dias /1*3/
+;
+PARAMETERS
+Y(k) Toma el valor 1 si la instancia k es posible fraude
+F(k,i) Toma el valor 1 si instancia k esta asociada al tipo de seguro i
+V(k,b) Toma el valor 1 si instancia k esta asociada al banco b
+O(k,j) Toma el valor 1 si instancia k esta asociada  al asegurado j
+M(k) Toma el valor 1 si instancia k esta asociada  al asegurado j
+P(i,t) Monto asociado a la instancia k (Pago al convertirse en siniestro)
+L(b) Probabilidad que banco b solicite la devolucion
+R(i) Cantidad maxima de seguros tipo i a evaluar
+Q(i) Cantidad de horas por caso tipo i
+;
+$include "incs/Y(k).inc";
+$include "incs/F(k,i).inc";
+$include "incs/V(k,b).inc";
+$include "incs/O(k,j).inc";
+$include "incs/M(k).inc";
+$include "incs/P(i,t).inc";
+$include "incs/L(b).inc";
+$include "incs/R(i).inc";
+$include "incs/Q(i).inc";
+
+scalar N Prima promedio por devolucion /1066670/;
+scalar C Costo por hora de trabajo abogado /55186/;
+
+VARIABLES
+*DESCRIPCION
+A(k,t) Toma valor 1 si se decide evaluar instancia k en dia t
+*Las dos siguientes variables se crean para facilitar la comprencion¨
+*de la solucion
+G(t) Cantidad de abogados a contratar en el dia t
+X(i,t) Cantidad de instancias de tipo seguro i a evaluar el dia t
+Z FO
+;
+*DOMINIO
+binary variable  A(k,t);
+integer variable G(t);
+integer variable X(i,t);
+
+EQUATIONS
+*DESCRIPCION
+R01 Una instancia puede ser investigada solo 1 vaz dentro del periodo analizado
+R02 Igualdad de horas de analisis respecto a capasidad de abogados
+R03 No evaluar mas de 25 instancias de banco SCC (b=1)
+R04 No evaluar mas de 30 instancias de banco OBA (b=10)
+R05 No evaluar mas de 30 instancias de banco ABB (b=13)
+R06 Evaluar a lo menos 30 instancias de banco YRI (b=33 o 4(sugerido))
+R07 Evaluar a lo menos 20 instancias de banco RCO (b=18)
+R08 No evaluar mas de R(i) instancias de tipo de seguro i
+R09 Igualdad de Cantidad de instancias a evaluar el dia t. Relacion A(k t) y X(i t)
+R11 La cantidad de abogados maxima a contratar es 6 o AT
+FO Funcion Objetivo
+;
+
+*MATEMATICAMENTE
+*Una instancia puede ser investigada solo 1 vez dentro del periodo analizado
+R01(k)..sum(t,A(k,t))=L=1;
+*Igualdad de horas de analisis respecto a capasidad de abogados
+R02(t)..sum((k,i),A(k,t)*F(k,i)*Q(i))=L=G(t)*9;
+
+*No evaluar mas de 25 instancias de banco SCC (b=1)
+R03(b)..sum((k,t),A(k,t)*V(k,'1'))=L=25;
+*No evaluar mas de 30 instancias de banco OBA (b=10)
+R04(b)..sum((k,t),A(k,t)*V(k,'10'))=L=30;
+*No evaluar mas de 30 instancias de banco ABB (b=13)
+R05(b)..sum((k,t),A(k,t)*V(k,'13'))=L=30;
+*Evaluar a lo menos 30 instancias de banco YRI (b=33 o 4 (sugerido))
+R06(b)..sum((k,t),A(k,t)*V(k,'4'))=G=30;
+*Evaluar a lo menos 20 instancias de banco RCO (b=18)
+R07(b)..sum((k,t),A(k,t)*V(k,'18'))=G=20;
+
+*No evaluar mas de R(i) instancias de tipo de seguro i
+R08(i)..sum(t,X(i,t))=L=R(i);
+
+*Igualdad de Cantidad de instancias a evaluar el dia t. Relacion A(k t) y X(i t)
+R09(i,t)..sum((k),A(k,t)*F(k,i))=E=X(i,t);
+
+*La cantidad de abogados maxima a contratar es 6 o AT
+R11(t)..G(t)=L=6;
+
+*Funcion Objetivo ultimo Cami BI
+FO..Z=E=
+sum((k,t,i),M(k)*(1-Y(k))*(1-P(i,t))*F(k,i)*(1-A(k,t)))
++sum((k,t),M(k)*Y(k)*A(k,t))
+-sum((k,t,i),C*Q(i)*F(k,i)*A(k,t))
+-sum((k,t,i),M(k)*(1-Y(k))*P(i,t)*F(k,i)*A(k,t))
++sum((k,b,j,t),N*(1-L(b))*V(k,b)*O(k,j)*A(k,t))
+-sum((k,b,j,t),N*L(b)*V(k,b)*O(k,j)*A(k,t))
+;
+
+
+MODEL Excel_Respuesta /all/
+solve Excel_Respuesta USING MIP MAXIMIZING Z;
+execute_unload "Excel_Respuesta_GAMS.gdx" A.L, G.L, X.L, Z.L
+
+display A.L, G.L, X.L, Z.L;
+
+execute 'gdxxrw.exe Excel_Respuesta_GAMS.gdx var=A.L rng=A!A1'
+execute 'gdxxrw.exe Excel_Respuesta_GAMS.gdx var=G.L rng=G!A1'
+execute 'gdxxrw.exe Excel_Respuesta_GAMS.gdx var=X.L rng=X!A1'
+execute 'gdxxrw.exe Excel_Respuesta_GAMS.gdx var=Z.L rng=Z!A1'

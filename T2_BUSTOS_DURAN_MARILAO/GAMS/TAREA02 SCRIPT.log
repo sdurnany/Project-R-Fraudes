@@ -1,0 +1,126 @@
+
+--- Job TAREA02 SCRIPT.gms Start 12/27/19 22:56:02 WEX-WEI 23.5.2 x86_64/MS Windows     
+GAMS Rev 235  Copyright (C) 1987-2010 GAMS Development. All rights reserved
+Licensee: Gary Goldstein                                 G010614:2121CA-WIN
+          Decision Ware, Inc.                                        DC2807
+--- Starting compilation
+--- TAREA02 SCRIPT.gms(21) 3 Mb
+--- .incs/Y(k).inc(165) 3 Mb
+--- TAREA02 SCRIPT.gms(22) 3 Mb
+--- .incs/F(k,i).inc(183) 3 Mb
+--- TAREA02 SCRIPT.gms(23) 3 Mb
+--- .incs/V(k,b).inc(165) 4 Mb
+--- TAREA02 SCRIPT.gms(24) 4 Mb
+--- .incs/O(k,j).inc(1485) 5 Mb
+--- TAREA02 SCRIPT.gms(25) 5 Mb
+--- .incs/M(k).inc(165) 5 Mb
+--- TAREA02 SCRIPT.gms(26) 5 Mb
+--- .incs/P(i,t).inc(30) 5 Mb
+--- TAREA02 SCRIPT.gms(27) 5 Mb
+--- .incs/L(b).inc(36) 5 Mb
+--- TAREA02 SCRIPT.gms(28) 5 Mb
+--- .incs/R(i).inc(10) 5 Mb
+--- TAREA02 SCRIPT.gms(29) 5 Mb
+--- .incs/Q(i).inc(10) 5 Mb
+--- TAREA02 SCRIPT.gms(109) 5 Mb
+--- Starting execution: elapsed 0:00:00.089
+--- TAREA02 SCRIPT.gms(2278) 6 Mb
+--- Generating MIP model Excel_Respuesta
+--- TAREA02 SCRIPT.gms(2350) 7 Mb
+---   356 rows  529 columns  11,983 non-zeroes
+---   528 discrete-columns
+***
+***   33 Integer +INF Bounds have been reset to 100
+***
+--- TAREA02 SCRIPT.gms(2350) 7 Mb
+--- Executing CPLEX: elapsed 0:00:00.186
+--- TAREA02 SCRIPT.gms(2350) 7 Mb
+
+IBM ILOG CPLEX   Aug 18, 2010 23.5.2 WEX 19143.19383 WEI x86_64/MS Windows
+Cplex 12.2.0.0, GAMS Link 34 
+GAMS/Cplex licensed for continuous and discrete problems.
+
+Cplex MIP uses 1 of 4 parallel threads. Change default with option THREADS.
+Reading data...
+Starting Cplex...
+Tried aggregator 2 times.
+MIP Presolve eliminated 249 rows and 241 columns.
+Aggregator did 9 substitutions.
+Reduced MIP has 98 rows, 279 columns, and 744 nonzeros.
+Reduced MIP has 279 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Probing time =    0.00 sec.
+Tried aggregator 1 time.
+Presolve time =    0.01 sec.
+Probing time =    0.00 sec.
+Clique table members: 93.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+No LP presolve or aggregator reductions.
+Presolve time =    0.00 sec.
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     185427127.850000
+Iteration:    62   Dual objective     =     129503835.950000
+Iteration:   124   Dual objective     =     125194968.350000
+Root relaxation solution time =    0.00 sec.
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer     Best Node    ItCnt     Gap
+
+*     0     0      integral     0  1.25131e+008  1.25131e+008      153    0.00%
+Elapsed real time =   0.01 sec. (tree size =  0.00 MB, solutions = 1)
+MIP status(101): integer optimal solution
+Fixing integer variables, and solving final LP...
+Tried aggregator 1 time.
+LP Presolve eliminated 356 rows and 529 columns.
+All rows and columns eliminated.
+Presolve time =    0.00 sec.
+Fixed MIP status(1): optimal
+
+Proven optimal solution.
+
+MIP Solution:    125131362.350000    (153 iterations, 0 nodes)
+Final Solve:     125131362.350000    (0 iterations)
+
+Best possible:   125131362.350000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+--- Restarting execution
+--- TAREA02 SCRIPT.gms(2350) 2 Mb
+--- Reading solution for model Excel_Respuesta
+--- TAREA02 SCRIPT.gms(2350) 2 Mb
+--- Executing after solve: elapsed 0:00:00.507
+--- TAREA02 SCRIPT.gms(2355) 3 Mb
+
+GDXXRW           Aug 18, 2010 23.5.2 WIN 19379.19383 VS8 x86/MS Windows       
+Input file : C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.gdx
+Output file: C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.xlsx
+Adding new sheet: A
+Total time = 2625 Ms
+--- TAREA02 SCRIPT.gms(2356) 3 Mb
+
+GDXXRW           Aug 18, 2010 23.5.2 WIN 19379.19383 VS8 x86/MS Windows       
+Input file : C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.gdx
+Output file: C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.xlsx
+Adding new sheet: G
+Total time = 2391 Ms
+--- TAREA02 SCRIPT.gms(2357) 3 Mb
+
+GDXXRW           Aug 18, 2010 23.5.2 WIN 19379.19383 VS8 x86/MS Windows       
+Input file : C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.gdx
+Output file: C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.xlsx
+Adding new sheet: X
+Total time = 1953 Ms
+--- TAREA02 SCRIPT.gms(2358) 3 Mb
+
+GDXXRW           Aug 18, 2010 23.5.2 WIN 19379.19383 VS8 x86/MS Windows       
+Input file : C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.gdx
+Output file: C:\Users\Hp i3\Desktop\CARPETA_BUSTOS_DURAN_MARILAO\GAMS\Excel_Respuesta_GAMS.xlsx
+Adding new sheet: Z
+Total time = 2047 Ms
+--- TAREA02 SCRIPT.gms(2358) 3 Mb
+*** Status: Normal completion
+--- Job TAREA02 SCRIPT.gms Stop 12/27/19 22:56:12 elapsed 0:00:10.311
